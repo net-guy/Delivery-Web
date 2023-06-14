@@ -17,7 +17,7 @@ services:
     container_name: cb_server
 
   nginx:
-    build: Nginx
+    image: nginx
     # restart: always
     volumes:
       - ./Nginx/nginx.conf:/etc/nginx/nginx.conf
