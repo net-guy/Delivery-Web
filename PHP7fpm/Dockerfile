@@ -1,6 +1,9 @@
 FROM php:7.2.1-fpm
 
-RUN echo 'deb http://httpredir.debian.org/debian jessie contrib' >> /etc/apt/sources.list
+RUN sed -i s/deb.debian.org/archive.debian.org/g /etc/apt/sources.list
+RUN sed -i 's|security.debian.org|archive.debian.org/debian-security/|g' /etc/apt/sources.list 
+RUN sed -i '/stretch-updates/d' /etc/apt/sources.list
+
 
 RUN apt-get update
 RUN export DEBIAN_FRONTEND=noninteractive && apt-get install -y --force-yes libssl-dev curl  libcurl4-gnutls-dev libxml2-dev libicu-dev libmcrypt4 libmemcached11 openssl
